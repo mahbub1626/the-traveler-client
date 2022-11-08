@@ -1,9 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LogIn = () => {
 
-    const handleLogin = event =>{
+    const handleLoginUser = event => {
         event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -11,7 +16,7 @@ const LogIn = () => {
 
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
 
-                    <form onSubmit={handleLogin} className="card-body">
+                    <form onSubmit={handleLoginUser} className="card-body">
                         <h1 className="text-3xl font-bold text-center">Login</h1>
                         <div className="form-control">
                             <label className="label">
@@ -32,6 +37,7 @@ const LogIn = () => {
                             <button className="btn btn-primary">Login</button>
                         </div>
                     </form>
+                    <p className='mb-4 text-center'>Have not account? <Link className=' font-bold text-blue-800' to='/register'>Register</Link></p>
                 </div>
             </div>
         </div>
