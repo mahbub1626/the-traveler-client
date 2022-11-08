@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar/Navbar';
 
 const Main = () => {
     return (
-        <div>
+        <div className='container mx-auto lg:max-w-screen-xl'>
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>
