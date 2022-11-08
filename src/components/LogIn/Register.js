@@ -1,9 +1,11 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-
+const googleProvider = new GoogleAuthProvider();
 const Register = () => {
-    const {createUser}= useContext(AuthContext);
+    const {createUser, createUserWithPopup}= useContext(AuthContext);
 
     const handleRegisterUser = event => {
         event.preventDefault()
@@ -18,6 +20,14 @@ const Register = () => {
             console.log(user);
         })
         .then(err => console.error(err))
+    }
+    const handleProvider = ()=>{
+        createUserWithPopup(googleProvider)
+        .then(result =>{
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(err=> console.error(err))
     }
 
     return (
@@ -53,6 +63,8 @@ const Register = () => {
                             <button className="btn btn-primary">Register</button>
                         </div>
                     </form>
+                    <button onClick={handleProvider} className="btn btn-ghost bottom-2 border-blue-500 w-1/4 mx-auto "><FaGoogle/></button>
+
                     <p className='mb-4 text-center'>Already have an account? <Link className=' font-bold text-blue-800' to='/login'>LogIn</Link></p>
 
                 </div>
