@@ -1,12 +1,10 @@
-import React, { createContext } from 'react';
-
-const AuthContext = createContext();
+import React from 'react';
 
 const LogIn = () => {
-    const handleLogin = event=>{
+
+    const handleLogin = event =>{
         event.preventDefault()
     }
-
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content">
