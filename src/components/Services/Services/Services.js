@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Review from '../Review/Review';
 import ServicesCard from './ServicesCard';
 
 const Services = () => {
@@ -11,11 +12,7 @@ const Services = () => {
             .then(data => {
                 // console.log(data);
                 setServices(data);
-                // const result = data.splice(0, 3)
-
-                // setServices(result);
-                // console.log(result);
-
+                
             })
     }, [])
     return (
@@ -30,11 +27,7 @@ const Services = () => {
                     ></ServicesCard>)
                 }
             </div>
-            <div className="w-36  my-4 mx-auto">
-                {/* <Link to='/services'>
-                    <button className="btn btn-primary  mx-auto">See more</button>
-                </Link> */}
-            </div>
+            
         </div>
     );
 };

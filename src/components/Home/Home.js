@@ -6,17 +6,25 @@ import Banner from './Banner/Banner';
 
 const Home = () => {
     const [services, setServices] = useState([])
+    const [empty, setEmpty] = useState('')
 
     useEffect(() => {
         fetch('http://localhost:5000/services')
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
-                // setServices(data);
+                // SPLICE FOR 3 CARD ON HOME PAGE
+               if(data.length > 0){
                 const result = data.splice(0, 3)
-
                 setServices(result);
                 console.log(result);
+                
+               }
+               else{  
+                setEmpty('');
+               }
+
+                
 
             })
     }, [])
@@ -26,6 +34,7 @@ const Home = () => {
             <h2>This is home page</h2>
             <div className='my-8 '>
                 <h1 className='text-3xl my-4'>Services: {services.length} </h1>
+                {services.length === 0 && <p className='text-3xl text-center my-10 text-gray-500'>Service not available</p> }
 
                 <div className='grid lg:grid-cols-3 gap-4 lg:gap-8'>
                     {

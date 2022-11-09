@@ -59,7 +59,7 @@ const LogIn = () => {
                         </div>
                     </form>
                             <button onClick={handleProvider} className="btn btn-ghost bottom-2 border-blue-500 w-1/4 mx-auto "><FaGoogle/></button>
-                    <p className='mb-4 text-center'>Have not account? <Link className=' font-bold text-blue-800' to='/register'>Register</Link></p>
+                    <p className='mb-4 my-4 text-center'>Don't have an account, <Link className=' font-bold text-blue-800' to='/register'>Register</Link></p>
                 </div>
             </div>
         </div>

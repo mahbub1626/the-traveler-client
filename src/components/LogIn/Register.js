@@ -65,7 +65,7 @@ const Register = () => {
                     </form>
                     <button onClick={handleProvider} className="btn btn-ghost bottom-2 border-blue-500 w-1/4 mx-auto "><FaGoogle/></button>
 
-                    <p className='mb-4 text-center'>Already have an account? <Link className=' font-bold text-blue-800' to='/login'>LogIn</Link></p>
+                    <p className='mb-4 my-4 text-center'>Already have an account? <Link className=' font-bold text-blue-800' to='/login'>LogIn</Link></p>
 
                 </div>
             </div>
