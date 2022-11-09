@@ -1,20 +1,24 @@
 import React, { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Review = ({ id, serviceName }) => {
-// const {user} = useContext()
+    const { user } = useContext(AuthContext);
+    console.log(user);
+    const { email, photoURL } = user;
+
     const handlePlaceOrder = event => {
         event.preventDefault()
         const form = event.target;
         const name = form.name.value;
-        const photo = form.photo.value;
+        const photoURL = form.photoURL.value;
         const rating = form.rating.value;
         const price = form.price.value;
         const details = form.details.value;
-        console.log(name, photo, rating, photo, price, details)
+        console.log(name, photoURL, rating, price, details)
 
         const review = {
             name,
-            photo,
+            photoURL,
             rating,
             price,
             details
@@ -44,19 +48,18 @@ const Review = ({ id, serviceName }) => {
             <p className='text-center text-3xl font-bold'>Review</p>
             <form onSubmit={handlePlaceOrder}>
                 <div className='text-center my-4'>
-                    {/* <h2 className="text-4xl">Add New Services {}</h2> */}
                     <h4 className="text-2xl">Service name: {serviceName}</h4>
                 </div>
 
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
 
                     <input name="name" type="text" placeholder="Service Name" className="input input-bordered w-full " />
-                    <input name="photo" type="photo" placeholder="Photo Link" className="input input-bordered w-full " />
-                    <input name="rating" type="number" placeholder="Rating" className="input input-bordered w-full " />
-                    <input name="price" type="number" placeholder="Service Price" className="input input-bordered w-full " />
+                    <input name="photoURL" type="photo" placeholder="Photo Link" className="input input-bordered w-full" defaultValue={photoURL} readOnly/>
+                    <input name="rating" type="number" placeholder="Rating out of 5" className="input input-bordered w-full " />
+                    <input name="email" type="email" placeholder="Email" className="input input-bordered w-full " defaultValue={email} readOnly/>
                 </div>
-                <textarea name="details" className="textarea textarea-bordered h-24 w-full my-4" placeholder="Service Details"></textarea>
-                <input className='btn btn-primary' type="submit" value="Review" />
+                <textarea name="details" className="textarea textarea-bordered h-24 w-full my-4" placeholder="Service Review"></textarea>
+                <input className='btn btn-primary ' type="submit" value="Add Review" />
             </form>
         </div>
     );
