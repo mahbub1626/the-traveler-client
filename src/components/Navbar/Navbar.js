@@ -7,11 +7,14 @@ const Navbar = () => {
 
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
+        <li><Link to='/services'>Services</Link></li>
         
         {
             user?.uid ?
                 <>
-                <li><Link to='/orders'>Order</Link></li>
+                <li><Link to='/review'>My review</Link></li>
+                <li><Link to='/addservices'>Add service</Link></li>
+                <li><Link to='/blogs'>Blogs</Link></li>
                 <li><Link onClick={logOut}>Log out</Link></li>
                 </>
                 :
