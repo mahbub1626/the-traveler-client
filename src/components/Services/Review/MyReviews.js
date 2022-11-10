@@ -9,7 +9,7 @@ const MyReviews = () => {
     // console.log(reviews)
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://the-traveler-server.vercel.app/reviews')
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

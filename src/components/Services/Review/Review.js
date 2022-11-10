@@ -3,25 +3,33 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Review = ({ id, serviceName }) => {
     const { user } = useContext(AuthContext);
-    console.log(user);
+    // console.log(user);
     const { email, photoURL } = user;
 
     const handlePlaceOrder = event => {
         event.preventDefault()
         const form = event.target;
         const name = form.name.value;
+        const email = form.email.value;
         const photoURL = form.photoURL.value;
         const rating = form.rating.value;
-        const price = form.price.value;
-        const details = form.details.value;
-        console.log(name, photoURL, rating, price, details)
+        const reviewMessage = form.reviewMessage.value;
+
+        const currDate = new Date().toLocaleDateString();
+        const currTime = new Date().toLocaleTimeString();
+
+        console.log(name, photoURL, rating, reviewMessage)
 
         const review = {
             name,
+            email,
+            serviceId: id,
+            serviceName: serviceName,
             photoURL,
             rating,
-            price,
-            details
+            reviewMessage,
+            currDate,
+            currTime
 
         }
         // if (phone.length > 10) {
@@ -31,7 +39,7 @@ const Review = ({ id, serviceName }) => {
 
         // }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://the-traveler-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -53,12 +61,12 @@ const Review = ({ id, serviceName }) => {
 
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
 
-                    <input name="name" type="text" placeholder="Service Name" className="input input-bordered w-full " />
-                    <input name="photoURL" type="photo" placeholder="Photo Link" className="input input-bordered w-full" defaultValue={photoURL} readOnly/>
+                    <input name="name" type="text" placeholder="Reviewer Name" className="input input-bordered w-full " />
+                    <input name="photoURL" type="photo" placeholder="Photo Link" className="input input-bordered w-full" defaultValue={photoURL} readOnly />
                     <input name="rating" type="number" placeholder="Rating out of 5" className="input input-bordered w-full " />
-                    <input name="email" type="email" placeholder="Email" className="input input-bordered w-full " defaultValue={email} readOnly/>
+                    <input name="email" type="email" placeholder="Email" className="input input-bordered w-full " defaultValue={email} readOnly />
                 </div>
-                <textarea name="details" className="textarea textarea-bordered h-24 w-full my-4" placeholder="Service Review"></textarea>
+                <textarea name="reviewMessage" className="textarea textarea-bordered h-24 w-full my-4" placeholder="Service Review"></textarea>
                 <input className='btn btn-primary ' type="submit" value="Add Review" />
             </form>
         </div>

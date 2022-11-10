@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
@@ -31,7 +32,7 @@ const AddServices = () => {
 
         // }
 
-        fetch('http://localhost:5000/services', {
+        fetch('https://the-traveler-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -39,8 +40,16 @@ const AddServices = () => {
             body: JSON.stringify(service)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(error => console.error(error));
+            .then(data => {
+                console.log(data);
+                form.reset();
+                toast.success('Successfully added!')
+
+            })
+            .catch(error => {
+                console.error(error)
+                toast.error("Service not added.")
+            });
 
     }
     return (

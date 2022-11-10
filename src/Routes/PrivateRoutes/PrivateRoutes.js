@@ -6,7 +6,7 @@ const PrivateRoutes = ({children}) => {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
     if(loading){
-        return <h2 className='text-5xl text-orange-600'>Loading...</h2>
+        return <button className="btn loading text-xl text-orange-400 text-center mx-auto">loading</button>
     }
 
     if (user) {

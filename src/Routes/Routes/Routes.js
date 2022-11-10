@@ -34,7 +34,6 @@ const router = createBrowserRouter([
       {
         path: '/services',
         element: <Services></Services>,
-        // loader: ()=> fetch('http://localhost:5000/services')
       },
       {
         path: '/addservices',
@@ -43,11 +42,11 @@ const router = createBrowserRouter([
       {
         path: '/services/:id',
         element: <PrivateRoutes><ServicesDetails></ServicesDetails></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+        loader: ({ params }) => fetch(`https://the-traveler-server.vercel.app/services/${params.id}`)
       },
       {
         path: '/myreview',
-        element: <MyReviews></MyReviews>
+        element: <PrivateRoutes><MyReviews></MyReviews></PrivateRoutes>
         
       },
       {

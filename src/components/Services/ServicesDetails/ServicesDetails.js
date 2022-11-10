@@ -1,11 +1,11 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Review from '../Review/Review';
 
 const ServicesDetails = () => {
     const { _id, name, price, photo, rating, details } = useLoaderData();
 
-    
+
 
     return (
         <div>
@@ -16,15 +16,23 @@ const ServicesDetails = () => {
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{name}</h2>
                     <p>{details}</p>
-                    <div className="card-actions">
-                        <button className="btn btn-primary">Buy Now</button>
+                    <div className="">
+                        <div className="flex justify-between">
+                            <div className='p-4'>
+                                <p className='text-xl text-black'>${price}</p>
+                            </div>
+                            <div className='p-4'>
+                               
+                                <p className='text-xl text-black'>Rating: {rating} out of 5.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div>
                 <Review
-               id={ _id}
-               serviceName={name}
+                    id={_id}
+                    serviceName={name}
                 ></Review>
 
             </div>
