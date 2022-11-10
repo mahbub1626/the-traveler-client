@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Partnership from '../Partnership/Partnership';
 import Services from '../Services/Services/Services';
 import ServicesCard from '../Services/Services/ServicesCard';
+import ShortIntro from '../ShortIntro/ShortIntro';
 import Banner from './Banner/Banner';
 
 const Home = () => {
@@ -50,6 +51,10 @@ const Home = () => {
                         <button className="btn btn-primary  mx-auto">See more</button>
                     </Link>
                 </div>
+            </div>
+
+            <div>
+                <ShortIntro></ShortIntro>
             </div>
 
             {/* in partnership */}
